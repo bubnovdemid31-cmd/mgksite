@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Масложиркомбинат Приморский — Масло и спреды с Дальневосточного берега</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-color: #0e8f8f;
+            --brand-dark: #0a6b6b;
+            --brand-light: #e0f2f2;
+            --text-dark: #333;
+            --text-light: #fff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #f9f9f9;
+        }
+
+        /* --- Header --- */
+        header {
+            background-color: var(--brand-color);
+            color: var(--text-light);
+            padding: 1rem 0;
+            /* Убрано position: sticky */
+            position: relative;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffd700;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(rgba(14, 143, 143, 0.8), rgba(14, 143, 143, 0.9)), url('https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--text-light);
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            background-color: #fff;
+            color: var(--brand-dark);
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* --- Sections --- */
+        section {
+            padding: 80px 0;
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--brand-dark);
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--brand-color);
+            margin: 20px auto 0;
+        }
+
+        /* --- Advantages --- */
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .advantage-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-bottom: 4px solid var(--brand-color);
+            transition: transform 0.3s;
+        }
+
+        .advantage-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .advantage-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--brand-light);
+            border-radius: 50%;
+            color: var(--brand-dark);
+            font-size: 1.8rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        /* --- Catalog --- */
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 200px;
+            background-color: var(--brand-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--brand-dark);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .product-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .product-details {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .product-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--brand-dark);
+        }
+
+        .price span {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: #888;
+        }
+
+        /* --- Modal --- */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #888;
+            background: none;
+            border: none;
+        }
+
+        .close-btn:hover {
+            color: var(--brand-dark);
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            color: var(--brand-dark);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--brand-light);
+            padding-bottom: 10px;
+        }
+
+        .modal-description {
+            color: #555;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .modal-specs {
+            margin-top: 20px;
+            background: var(--brand-light);
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        .modal-specs h4 {
+            color: var(--brand-dark);
+            margin-bottom: 10px;
+        }
+
+        .modal-price {
+            margin-top: 20px;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--brand-dark);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--brand-dark);
+            color: var(--text-light);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-contact {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .header-content { flex-direction: column; gap: 20px; }
+            nav ul { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="Resources/logo.png" alt="Масложиркомбинат Приморский">
+                <span>МЖК Приморский</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#catalog">Каталог</a></li>
+                    <li><a href="#advantages">Преимущества</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Масло и спреды с дальневосточного берега</h1>
+            <p>Производим до 100 тонн масложировой продукции в сутки. Отгружаем по Приморью за 24 часа, по Дальнему Востоку — за 3–7 дней.</p>
+            <p>Работаем с торговыми компаниями, пекарнями и HoReCa без посредников.</p>
+            <a href="#catalog" class="btn">Смотреть каталог</a>
+        </div>
+    </section>
+
+    <section id="advantages">
+        <div class="container">
+            <h2>Почему выбирают нас</h2>
+            <div class="advantages-grid">
+                <div class="advantage-card">
+                    <div class="advantage-icon">1</div>
+                    <h3>Экономия на доставке</h3>
+                    <p>Оптимизированные логистические схемы позволяют сократить расходы на транспортировку продукции.</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">2</div>
+                    <h3>Высокие стандарты качества</h3>
+                    <p>Продукция соответствует всем установленным стандартам и требованиям, что подтверждается сертификатами.</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">3</div>
+                    <h3>Надёжность отгрузок</h3>
+                    <p>Гарантированная своевременная доставка продукции в согласованные сроки.</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">4</div>
+                    <h3>Скорость оформления документов</h3>
+                    <p>Быстрое и удобное оформление всех необходимых документов для обеспечения бесперебойной работы партнёров.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="catalog">
+        <div class="container">
+            <h2>Каталог продукции</h2>
+            <div class="catalog-grid" id="product-grid">
+                <!-- Карточки будут сгенерированы скриптом -->
+            </div>
+        </div>
+    </section>
+
+    <footer id="contacts">
+        <div class="container">
+            <h2 style="color: white;">Контакты</h2>
+            <div class="footer-contact">
+                <p>ООО "МАСЛОЖИРКОМБИНАТ ПРИМОРСКИЙ"</p>
+                <p>Адрес: 690054, Приморский край, г. Владивосток, ул. 2-я Шоссейная, д. 8В, офис 308</p>
+                <p>Телефон: +7 (908) 965-85-05</p>
+                <p>E-mail: super@ussurt.ru</p>
+            </div>
+            <p>&copy; 2023 Масложиркомбинат Приморский. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- Модальное окно -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <div id="modalBody">
+                <!-- Содержимое будет вставлено скриптом -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Данные о продуктах из вашего прайса и описания
+        const products = [
+            {
+                id: 1,
+                name: 'Масло сливочное "Традиционное"',
+                category: 'Масло монолит',
+                fat: '82,5%',
+                weight: '5 кг',
+                price: 435,
+                unit: 'кг',
+                image: 'Масло',
+                description: 'Сладко-сливочное Традиционное масло 82,5% - это высококачественный натуральный продукт, созданный из свежего коровьего молока. Масло содержит 82,5% жирности, что обеспечивает кремовой вкус и текстуру. Оно не содержит искусственных добавок и консервантов, а также не подвергалось генетической модификации.',
+                specs: {
+                    'Упаковка': 'Картонная коробка',
+                    'ГОСТ': '32261−2013. ВЫСШИЙ СОРТ',
+                    'Вес нетто': '5 кг',
+                    'Состав': 'Пастеризованные сливки',
+                    'Срок годности': '9 мес. (-6°C), 15 мес. (-16°C), 24 мес. (-25°C)',
+                    'Пищевая ценность (100г)': 'Белки 0,8г / Жиры 82,5г / Углеводы 0,6г',
+                    'Энергетическая ценность': '748 кКал',
+                    'Производитель': 'ООО «ЧИЗМОЛ»'
+                }
+            },
+            {
+                id: 2,
+                name: 'Масло сливочное "Крестьянское"',
+                category: 'Масло монолит',
+                fat: '72,5%',
+                weight: '5 кг',
+                price: 400,
+                unit: 'кг',
+                image: 'Масло',
+                description: 'Сладко-сливочное Крестьянское масло 72,5% - это высококачественный натуральный продукт, созданный из свежего коровьего молока. Масло содержит 72,5% жирности, что обеспечивает кремовой вкус и текстуру. Оно не содержит искусственных добавок и консервантов.',
+                specs: {
+                    'Упаковка': 'Картонная коробка',
+                    'ГОСТ': '32261−2013. ВЫСШИЙ СОРТ',
+                    'Вес нетто': '5 кг',
+                    'Состав': 'Пастеризованные сливки',
+                    'Срок годности': '9 мес. (-6°C), 15 мес. (-16°C), 24 мес. (-25°C)',
+                    'Пищевая ценность (100г)': 'Белки 1,6г / Жиры 72,5г / Углеводы 0,6г',
+                    'Энергетическая ценность': '662 кКал',
+                    'Производитель': 'ООО «ЧИЗМОЛ»'
+                }
+            },
+            {
+                id: 3,
+                name: 'Масло сливочное "Крестьянское" (Фасовка)',
+                category: 'Масло фасовка',
+                fat: '72,5%',
+                weight: '200гр',
+                price: 110,
+                unit: 'шт',
+                image: 'Масло',
+                description: 'Сливочное масло "Крестьянское" фасованное в эколин. Удобная упаковка для розничной продажи. Высокое качество и натуральный состав.',
+                specs: {
+                    'Упаковка': 'Эколин (32 шт в коробке)',
+                    'Вес нетто': '200 гр',
+                    'Срок годности': '120 суток',
+                    'Производитель': 'ООО «ЧИЗМОЛ»'
+                }
+            },
+            {
+                id: 4,
+                name: 'Масло сливочное "Традиционное" (Фасовка)',
+                category: 'Масло фасовка',
+                fat: '82,5%',
+                weight: '200гр',
+                price: 120,
+                unit: 'шт',
+                image: 'Масло',
+                description: 'Сливочное масло "Традиционное" фасованное в эколин. Классический вкус и высокое содержание жира.',
+                specs: {
+                    'Упаковка': 'Эколин (32 шт в коробке)',
+                    'Вес нетто': '200 гр',
+                    'Срок годности': '120 суток',
+                    'Производитель': 'ООО «ЧИЗМОЛ»'
+                }
+            },
+            {
+                id: 5,
+                name: 'Спред растительно-сливочный (Фасовка)',
+                category: 'Спред фасовка',
+                fat: '72,5%',
+                weight: '200гр',
+                price: 70,
+                unit: 'шт',
+                image: 'Спред',
+                description: 'Спред растительно-сливочный 72,5% - это комбинированный продукт, содержащий молочные и растительные жиры. Отлично подходит для бутербродов и выпечки.',
+                specs: {
+                    'Упаковка': 'Эколин (32 шт в коробке)',
+                    'Вес нетто': '200 гр',
+                    'Срок годности': '120 суток',
+                    'Производитель': 'ООО «МЖК ПРИМ»'
+                }
+            },
+            {
+                id: 6,
+                name: 'Спред растительно-сливочный (Фасовка)',
+                category: 'Спред фасовка',
+                fat: '82,5%',
+                weight: '200гр',
+                price: 80,
+                unit: 'шт',
+                image: 'Спред',
+                description: 'Спред растительно-сливочный 82,5% - вкусный и экономичный продукт для ежедневного использования.',
+                specs: {
+                    'Упаковка': 'Эколин (32 шт в коробке)',
+                    'Вес нетто': '200 гр',
+                    'Срок годности': '120 суток',
+                    'Производитель': 'ООО «МЖК ПРИМ»'
+                }
+            },
+            {
+                id: 7,
+                name: 'Масло растительно-сливочное',
+                category: 'Спреды монолит',
+                fat: '82,5%',
+                weight: '5 кг',
+                price: 255,
+                unit: 'кг',
+                image: 'Спред',
+                description: 'Масло Растительно-Сливочное 82,5% - это комбинированный продукт, содержит более 15% молочных жиров. Сбалансированный вкус и текстура.',
+                specs: {
+                    'Упаковка': 'Гофрокороб',
+                    'Вес нетто': '5 кг',
+                    'Состав': 'Заменитель молочного жира, масло сливочное, молоко сухое обезжиренное, эмульгатор, краситель, ароматизатор',
+                    'Срок годности': '2 мес. (-3°C до -5°C), 6 мес. (-4°C до -11°C), 9 мес. (-12°C до -18°C)',
+                    'Пищевая ценность (100г)': 'Белки 1,0г / Жиры 82,5г / Углеводы 0,6г',
+                    'Энергетическая ценность': '749 кКал',
+                    'Производитель': 'ООО «МЖК ПРИМ»'
+                }
+            },
+            {
+                id: 8,
+                name: 'Маргарин "Домашний"',
+                category: 'Маргарин',
+                fat: '80%',
+                weight: '5 кг',
+                price: 175,
+                unit: 'кг',
+                image: 'Маргарин',
+                description: 'Маргарин 80% - это эмульсионный продукт на основе растительных масел, подходит для выпечки, жарки и приготовления разных блюд.',
+                specs: {
+                    'Упаковка': 'Гофрокороб',
+                    'Вес нетто': '5 кг',
+                    'Состав': 'Жиры специального назначения, вода, соль, эмульгатор, сорбат калия, краситель, ароматизатор',
+                    'Срок годности': '12 мес. (-20°C до 0°C), 10 мес. (до +6°C)',
+                    'Пищевая ценность (100г)': 'Белки 1,0г / Жиры 80г / Углеводы 0,6г',
+                    'Энергетическая ценность': '730 кКал',
+                    'Производитель': 'ООО «МЖК ПРИМ»'
+                }
+            }
+        ];
+
+        // Функция для генерации карточек
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+
+            products.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="product-img">${product.image}</div>
+                    <div class="product-info">
+                        <div class="product-title">${product.name}</div>
+                        <div class="product-details">
+                            Жирность: ${product.fat}<br>
+                            Вес: ${product.weight}
+                        </div>
+                        <div class="product-footer">
+                            <div class="price">${product.price} ₽ <span>/ ${product.unit}</span></div>
+                            <button class="btn" onclick="openModal(${product.id})" style="padding: 8px 15px; font-size: 0.9rem;">Подробнее</button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Функция открытия модального окна
+        function openModal(productId) {
+            const product = products.find(p => p.id === productId);
+            const modal = document.getElementById('productModal');
+            const modalBody = document.getElementById('modalBody');
+
+            let specsHtml = '';
+            for (const [key, value] of Object.entries(product.specs)) {
+                specsHtml += `<p><strong>${key}:</strong> ${value}</p>`;
+            }
+
+            modalBody.innerHTML = `
+                <h2 class="modal-title">${product.name}</h2>
+                <div class="modal-description">
+                    <p>${product.description}</p>
+                </div>
+                <div class="modal-specs">
+                    <h4>Характеристики</h4>
+                    ${specsHtml}
+                </div>
+                <div class="modal-price">
+                    Цена: ${product.price} ₽ / ${product.unit}
+                </div>
+            `;
+
+            modal.style.display = 'flex';
+        }
+
+        // Функция закрытия модального окна
+        function closeModal() {
+            const modal = document.getElementById('productModal');
+            modal.style.display = 'none';
+        }
+
+        // Закрытие по клику вне окна
+        window.onclick = function(event) {
+            const modal = document.getElementById('productModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Инициализация
+        document.addEventListener('DOMContentLoaded', renderProducts);
+    </script>
+</body>
+</html>
